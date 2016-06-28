@@ -34,7 +34,7 @@
 
     </i:Interaction.Triggers>
     
-    <Grid>
-        
+    <Grid Background="Aqua">
+        <v:LuminoFrameWindowHost x:Name="Host" Width="200" Height="100" />
     </Grid>
 </Window>

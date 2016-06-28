@@ -37,7 +37,9 @@ namespace LuminoStudio.Views
         {
             HwndSource source = (HwndSource)HwndSource.FromVisual(this);
 
+            Lumino.Config.SetGraphicsRenderingType(Lumino.GraphicsRenderingType.Immediate);
             Lumino.Config.SetUserWindowHandle(source.Handle);
+            //Lumino.Config.SetUserWindowHandle(Host._wfControl.Handle);
             Lumino.Engine.Initialize();
         }
 
