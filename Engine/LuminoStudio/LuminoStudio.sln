@@ -7,20 +7,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuminoStudio", "LuminoStudi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuminoDotNet", "..\External\Lumino\bindings\DotNet\LuminoDotNet\LuminoDotNet.csproj", "{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuminoWpfSlate", "LuminoWpfSlate\LuminoWpfSlate.csproj", "{960EF5F1-7A23-4D13-B9E0-FF91D0377663}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C899298B-7383-4662-954C-70BBDB07BEC7}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{C899298B-7383-4662-954C-70BBDB07BEC7}.Debug|x86.ActiveCfg = Debug|x86
 		{C899298B-7383-4662-954C-70BBDB07BEC7}.Debug|x86.Build.0 = Debug|x86
+		{C899298B-7383-4662-954C-70BBDB07BEC7}.Release|Any CPU.ActiveCfg = Release|x86
 		{C899298B-7383-4662-954C-70BBDB07BEC7}.Release|x86.ActiveCfg = Release|x86
 		{C899298B-7383-4662-954C-70BBDB07BEC7}.Release|x86.Build.0 = Release|x86
+		{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}.Debug|x86.ActiveCfg = Debug|x86
 		{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}.Debug|x86.Build.0 = Debug|x86
+		{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}.Release|Any CPU.ActiveCfg = Release|x86
 		{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}.Release|x86.ActiveCfg = Release|x86
 		{A5AF6708-3D6D-43CB-B9F6-F36B0873F508}.Release|x86.Build.0 = Release|x86
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Debug|x86.Build.0 = Debug|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Release|x86.ActiveCfg = Release|Any CPU
+		{960EF5F1-7A23-4D13-B9E0-FF91D0377663}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

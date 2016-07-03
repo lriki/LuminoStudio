@@ -12,6 +12,8 @@ using Livet.EventListeners;
 using Livet.Messaging.Windows;
 
 using LuminoStudio.Models;
+using Reactive.Bindings;
+using System.Reactive.Linq;
 
 namespace LuminoStudio.ViewModels
 {
@@ -58,6 +60,24 @@ namespace LuminoStudio.ViewModels
          * LivetのViewModelではプロパティ変更通知(RaisePropertyChanged)やDispatcherCollectionを使ったコレクション変更通知は
          * 自動的にUIDispatcher上での通知に変換されます。変更通知に際してUIDispatcherを操作する必要はありません。
          */
+         
+        public ReactiveCommand NewProjectCommand { get; private set; }
+
+        public MainWindowViewModel()
+        {
+            NewProjectCommand = new ReactiveCommand();
+            NewProjectCommand.Subscribe(_ => {
+                Console.WriteLine("do");
+
+
+                var vm = new ProjectCreationWindowViewModel();
+                Messenger.Raise(new TransitionMessage(vm, "ProjectCreationWindow"));
+                if (vm.DialogResult)
+                {
+                }
+                Console.WriteLine(vm.DialogResult);
+            });
+        }
 
         public void Initialize()
         {
