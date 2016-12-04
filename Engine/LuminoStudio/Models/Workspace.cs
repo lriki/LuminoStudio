@@ -13,7 +13,7 @@ namespace LuminoStudio.Models
 
         public static void CreateProject(string name, string location)
         {
-            Project = new Project(name, location, new SimpleAADVGameGenre.SimpleAADVGameGenre());
+            Project = new Project(name, location, SimpleAADVGameGenre.PluginInfo.CreateGenrePreset());
         }
     }
 }
