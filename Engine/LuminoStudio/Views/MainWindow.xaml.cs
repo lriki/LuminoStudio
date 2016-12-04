@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LuminoStudio.Views
 {
     /// <summary>
-    /// ProjectCreationWindow.xaml の相互作用ロジック
+    /// MainWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class ProjectCreationWindow : Window
+    public partial class MainWindow : Window
     {
-        public ProjectCreationWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }

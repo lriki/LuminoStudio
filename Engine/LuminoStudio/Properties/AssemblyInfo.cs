@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("LuminoStudio")]
-[assembly: AssemblyCopyright("Copyright c  2011")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -41,11 +41,11 @@ using System.Windows;
 )]
 
 
-// アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
+// アセンブリのバージョン情報は次の 4 つの値で構成されています:
 //
-//      Major Version
-//      Minor Version 
-//      Build Number
+//      メジャー バージョン
+//      マイナー バージョン
+//      ビルド番号
 //      Revision
 //
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
