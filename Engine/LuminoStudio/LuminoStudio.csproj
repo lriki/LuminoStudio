@@ -178,9 +178,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LuminoStudioCore\LuminoStudioCore.csproj">
+      <Project>{26b0e184-7c69-40c4-a83b-29e645d7e011}</Project>
+      <Name>LuminoStudioCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LuminoWpfSlate\LuminoWpfSlate.csproj">
       <Project>{960ef5f1-7a23-4d13-b9e0-ff91d0377663}</Project>
       <Name>LuminoWpfSlate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleAADVGameGenre\SimpleAADVGameGenre.csproj">
+      <Project>{599875b2-d1eb-4e86-8af0-4da2cb8006d3}</Project>
+      <Name>SimpleAADVGameGenre</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,7 @@ namespace LuminoStudio.Models
         /// <summary>
         /// 新規作成
         /// </summary>
-        public Project(string name, string location)
+        public Project(string name, string location, GenrePreset genrePreset)
         {
 
         }
