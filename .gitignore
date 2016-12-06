@@ -28,7 +28,8 @@
 *.out
 *.app
 
-
+#
+.klocwork
 
 #-------------------------------------------------------------------------------
 ## Ignore Visual Studio temporary files, build results, and

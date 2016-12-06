@@ -9,7 +9,8 @@
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:ln="http://lumino.net/wpf"
         mc:Ignorable="d"
-        Title="ProjectCreationWindow" Height="300" Width="300">
+        Title="ProjectCreationWindow" Height="300" Width="300"
+                      Style="{StaticResource lnWindowStyle}">
 
 
     <i:Interaction.Triggers>
@@ -74,7 +75,8 @@
                 Content="OK"
                 Command="{Binding OkCommand}"
                 Width="80"
-                Margin="3" />
+                Margin="3" 
+                Style="{StaticResource MaterialDesignRaisedButton}" />
             <ln:CallMethodButton
                 Content="Cancel"
                 MethodName="CloseOnCancel"
