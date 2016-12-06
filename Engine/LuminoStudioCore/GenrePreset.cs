@@ -8,5 +8,9 @@ namespace LuminoStudio
 {
     public class GenrePreset
     {
+        public virtual void OnCreateWorkDirectories(string resourceDirectoryFullPath)
+        {
+
+        }
     }
 }

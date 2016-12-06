@@ -138,7 +138,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\Documents\DocumentViewModelBase.cs" />
     <Compile Include="ViewModels\Documents\ProjectSettingDocumentViewModel.cs" />
