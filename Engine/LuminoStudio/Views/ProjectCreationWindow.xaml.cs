@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace LuminoStudio.Views
 {
     /// <summary>
     /// ProjectCreationWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class ProjectCreationWindow : Window
+    public partial class ProjectCreationWindow : MetroWindow
     {
         public ProjectCreationWindow()
         {
