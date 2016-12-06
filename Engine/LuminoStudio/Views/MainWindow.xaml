@@ -9,6 +9,12 @@
         xmlns:vm="clr-namespace:LuminoStudio.ViewModels"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:vmDocuments="clr-namespace:LuminoStudio.ViewModels.Documents"
+        xmlns:vmPanes="clr-namespace:LuminoStudio.ViewModels.Panes"
+        xmlns:vThemes="clr-namespace:LuminoStudio.Views.Themes"
+        xmlns:vDocuments="clr-namespace:LuminoStudio.Views.Documents"
+        xmlns:vPanes="clr-namespace:LuminoStudio.Views.Panes"
+        xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1280"
                       Style="{StaticResource lnWindowStyle}">
@@ -50,12 +56,98 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Menu>
+        <Menu Grid.Row="0">
             <MenuItem Header="File">
                 <MenuItem Header="New porject" Command="{Binding NewProjectCommand}">
 
                 </MenuItem>
             </MenuItem>
         </Menu>
+
+        <!-- ======== ドッキングエリア ======== -->
+        <avalonDock:DockingManager 
+            x:Name="_dockingManager" Grid.Row="1" 
+            DocumentsSource="{Binding DockingDocumentViewModels}"
+            AnchorablesSource="{Binding DockingPaneViewModels}">
+
+            <avalonDock:DockingManager.Theme>
+                <vThemes:DockingWindowsTheme />
+            </avalonDock:DockingManager.Theme>
+
+            <!-- ======== LayoutItem コンテナ (ウィンドウやタブ) のスタイル ======== -->
+            <avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+                <v:LayoutItemContainerStyleSelector>
+                    <!-- Document のスタイル -->
+                    <v:LayoutItemTypedStyle DataType="{x:Type vmDocuments:DocumentViewModelBase}">
+                        <Style TargetType="{x:Type avalonDock:LayoutItem}">
+                            <Setter Property="Title" Value="{Binding Model.Title}" />
+                        </Style>
+                    </v:LayoutItemTypedStyle>
+                    <!-- Pane のスタイル -->
+                    <v:LayoutItemTypedStyle DataType="{x:Type vmPanes:PaneViewModelBase}">
+                        <Style TargetType="{x:Type avalonDock:LayoutAnchorableItem}">
+                            <Setter Property="Title" Value="{Binding Model.Title}"/>
+                        </Style>
+                    </v:LayoutItemTypedStyle>
+                </v:LayoutItemContainerStyleSelector>
+            </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+
+            <!-- ======== ウィンドウ内容のテンプレート ======== -->
+            <avalonDock:DockingManager.LayoutItemTemplateSelector>
+                <v:LayoutItemTemplateSelector>
+                    <!-- [プロジェクト設定] Document -->
+                    <DataTemplate DataType="{x:Type vmDocuments:ProjectSettingDocumentViewModel}">
+                        <vDocuments:ProjectSettingDocument />
+                    </DataTemplate>
+                    <!-- [ソースコード] Document -->
+                    <!--<DataTemplate DataType="{x:Type vmDocuments:SourceFileDocumentViewModel}">
+                        <vDocuments:SourceFileDocument />
+                    </DataTemplate>-->
+                    <!-- [エラー一覧] Pane -->
+                    <!--<DataTemplate DataType="{x:Type vmPanes:ErrorListPaneViewModel}">
+                        <vPanes:ErrorListPane />
+                    </DataTemplate>-->
+                    <!-- [出力] Pane -->
+                    <DataTemplate DataType="{x:Type vmPanes:OutputPaneViewModel}">
+                        <vPanes:OutputPane />
+                    </DataTemplate>
+                    <!-- [プロパティ] Pane -->
+                    <!--<DataTemplate DataType="{x:Type vmPanes:PropertyPaneViewModel}">
+                        <vPanes:PropertyPane />
+                    </DataTemplate>-->
+                    <!-- [ソリューション エクスプローラ] Pane -->
+                    <DataTemplate DataType="{x:Type vmPanes:ResourceManagerPaneViewModel}">
+                        <vPanes:ResourceManagerPane />
+                    </DataTemplate>
+                </v:LayoutItemTemplateSelector>
+            </avalonDock:DockingManager.LayoutItemTemplateSelector>
+
+            <!-- ======== デフォルトレイアウト ======== -->
+
+            <!-- ContentId で識別される ViewModel を持つ LayoutAnchorable を、TargetLayoutName で識別される LayoutAnchorablePane に接続する -->
+            <avalonDock:DockingManager.LayoutUpdateStrategy>
+                <v:LayoutInitializer>
+                    <v:LayoutInsertTarget ContentId="SolutionExplorerPaneViewModel" TargetLayoutName="LeftSideArea" />
+                    <v:LayoutInsertTarget ContentId="PropertyPaneViewModel" TargetLayoutName="RightSideArea" />
+                    <v:LayoutInsertTarget ContentId="ErrorListPaneViewModel" TargetLayoutName="BottomSideArea" />
+                    <v:LayoutInsertTarget ContentId="OutputPaneViewModel" TargetLayoutName="BottomSideArea" />
+                </v:LayoutInitializer>
+            </avalonDock:DockingManager.LayoutUpdateStrategy>
+
+            <!-- 初期レイアウト -->
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Horizontal">
+                    <avalonDock:LayoutAnchorablePane DockWidth="150" Name="LeftSideArea" />
+                    <avalonDock:LayoutPanel Orientation="Vertical" >
+                        <avalonDock:LayoutPanel Orientation="Horizontal">
+                            <avalonDock:LayoutDocumentPane />
+                            <avalonDock:LayoutAnchorablePane DockWidth="150" Name="RightSideArea" />
+                        </avalonDock:LayoutPanel>
+                        <avalonDock:LayoutAnchorablePane DockHeight="150" Name="BottomSideArea" />
+                    </avalonDock:LayoutPanel>
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+
+        </avalonDock:DockingManager>
     </Grid>
 </Controls:MetroWindow>

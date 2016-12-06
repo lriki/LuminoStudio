@@ -140,14 +140,41 @@
     </ApplicationDefinition>
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Workspace.cs" />
+    <Compile Include="ViewModels\Documents\DocumentViewModelBase.cs" />
+    <Compile Include="ViewModels\Documents\ProjectSettingDocumentViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Panes\OutputPaneViewModel.cs" />
+    <Compile Include="ViewModels\Panes\PaneViewModelBase.cs" />
+    <Compile Include="ViewModels\Panes\ResourceManagerPaneViewModel.cs" />
     <Compile Include="ViewModels\ProjectCreationWindowViewModel.cs" />
+    <Compile Include="Views\Documents\ProjectSettingDocument.xaml.cs">
+      <DependentUpon>ProjectSettingDocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Panes\OutputPane.xaml.cs">
+      <DependentUpon>OutputPane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Panes\ResourceManagerPane.xaml.cs">
+      <DependentUpon>ResourceManagerPane.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Helpers\LayoutInitializer.cs" />
     <Compile Include="Views\Helpers\LayoutItemContainerStyleSelector.cs" />
     <Compile Include="Views\Helpers\LayoutItemTemplateSelector.cs" />
     <Compile Include="Views\ProjectCreationWindow.xaml.cs">
       <DependentUpon>ProjectCreationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Themes\DockingWindows.cs" />
+    <Page Include="Views\Documents\ProjectSettingDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Panes\OutputPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Panes\ResourceManagerPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +194,14 @@
     <Page Include="Views\ProjectCreationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\DockingWindows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Themes\DockingWindowsBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +245,44 @@
       <Project>{599875b2-d1eb-4e86-8af0-4da2cb8006d3}</Project>
       <Name>SimpleAADVGameGenre</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\Themes\Images\DockAnchorableBottom.png" />
+    <Resource Include="Views\Themes\Images\DockAnchorableLeft.png" />
+    <Resource Include="Views\Themes\Images\DockAnchorableRight.png" />
+    <Resource Include="Views\Themes\Images\DockAnchorableTop.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentAsAnchorableBottom.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentAsAnchorableLeft.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentAsAnchorableRight.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentAsAnchorableTop.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentBottom.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentInside.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentLeft.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentRight.png" />
+    <Resource Include="Views\Themes\Images\DockDocumentTop.png" />
+    <Resource Include="Views\Themes\Images\DockPaneEmpty.png" />
+    <Resource Include="Views\Themes\Images\DockPaneLargeEmpty.png" />
+    <Resource Include="Views\Themes\Images\HTabGroup.png" />
+    <Resource Include="Views\Themes\Images\Locked.png" />
+    <Resource Include="Views\Themes\Images\PinAutoHide.png" />
+    <Resource Include="Views\Themes\Images\PinAutoHide_Black.png" />
+    <Resource Include="Views\Themes\Images\PinAutoHide_Dark.png" />
+    <Resource Include="Views\Themes\Images\PinClose.png" />
+    <Resource Include="Views\Themes\Images\PinClose_Black.png" />
+    <Resource Include="Views\Themes\Images\PinClose_Dark.png" />
+    <Resource Include="Views\Themes\Images\PinDocMenu.png" />
+    <Resource Include="Views\Themes\Images\PinDocMenu_Black.png" />
+    <Resource Include="Views\Themes\Images\PinMaximize.png" />
+    <Resource Include="Views\Themes\Images\PinMaximize_Black.png" />
+    <Resource Include="Views\Themes\Images\PinMaximize_Dark.png" />
+    <Resource Include="Views\Themes\Images\PinMenu.png" />
+    <Resource Include="Views\Themes\Images\PinMenu_Black.png" />
+    <Resource Include="Views\Themes\Images\PinMenu_Dark.png" />
+    <Resource Include="Views\Themes\Images\PinRestore.png" />
+    <Resource Include="Views\Themes\Images\PinRestore_Black.png" />
+    <Resource Include="Views\Themes\Images\PinRestore_Dark.png" />
+    <Resource Include="Views\Themes\Images\VTabGroup.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
