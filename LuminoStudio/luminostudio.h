@@ -12,6 +12,9 @@ public:
 	LuminoStudio(QWidget *parent = 0);
 	~LuminoStudio();
 
+private slots:
+	void menuSelected();
+
 private:
 	Ui::LuminoStudioClass ui;
 };
