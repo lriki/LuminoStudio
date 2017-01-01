@@ -3,10 +3,20 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 #-------------------------------------------------------------------------------
 set(LN_SOURCES
-	main.cpp
+	src/luminostudio.cpp
+	src/luminostudio.h
+	src/main.cpp
+	src/LuminoStudio.PCH.cpp
+	src/LuminoStudio.PCH.h
 )
 
-add_subdirectory(Engine/External/Lumino)
+
+add_subdirectory(external/Lumino)
+
+include_directories(
+	external/Lumino/include
+	external/Lumino/external/Lumino.Core/include
+)
 
 #-------------------------------------------------------------------------------
 # Qt のパスを最初に指定する必要がある
@@ -22,9 +32,14 @@ message(STATUS "Qt5 --> ${Qt5Widgets_VERSION_STRING}")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
-add_executable(LuminoStudio ${LN_SOURCES})
+qt5_add_resources(LN_QT_RESOURCES
+	src/luminostudio.qrc
+)
+
+add_executable(LuminoStudio ${LN_SOURCES} ${LN_QT_RESOURCES})
 target_link_libraries(LuminoStudio Qt5::Widgets)
 target_link_libraries(LuminoStudio Lumino_Static)
+ln_add_pch(LuminoStudio "LuminoStudio.PCH.h" "src/LuminoStudio.PCH.cpp")
 
 # Qt の DLL をコピーする
 add_custom_command(TARGET LuminoStudio POST_BUILD
