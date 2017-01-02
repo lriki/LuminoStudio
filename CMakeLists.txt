@@ -51,6 +51,7 @@ set(CMAKE_AUTOMOC ON)
 
 qt5_add_resources(LN_QT_RESOURCES
 	src/luminostudio.qrc
+	src/Resources/style.qrc
 )
 
 add_executable(LuminoStudio ${LN_SOURCES} ${LN_QT_RESOURCES})
