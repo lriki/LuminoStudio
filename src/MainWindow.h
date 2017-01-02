@@ -4,18 +4,20 @@
 #include <QtWidgets/QMainWindow>
 //#include "ui_luminostudio.h"
 
-class LuminoStudio : public QMainWindow
+class MainWindow : public QMainWindow
 {
 	Q_OBJECT
-
 public:
-	LuminoStudio(QWidget *parent = 0);
-	~LuminoStudio();
+	MainWindow(QWidget *parent = 0);
+	virtual ~MainWindow();
 
 private slots:
 	void menuSelected();
 
+	void onClosed();
+
 private:
+	virtual void closeEvent(QCloseEvent* event) override;
 	//Ui::LuminoStudioClass ui;
 };
 

@@ -1,11 +1,17 @@
 
-#include "luminostudio.h"
+#include "MainWindow.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	LuminoStudio w;
+
+	
+
+	MainWindow w;
 	w.show();
-	return a.exec();
+	int exitCode = a.exec();
+
+	ln::Engine::Terminate();
+	return exitCode;
 }
