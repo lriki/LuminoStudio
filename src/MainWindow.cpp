@@ -1,6 +1,7 @@
 
-#include "LuminoViewWidget.h"
 #include "MainWindow.h"
+#include "LuminoViewWidget.h"
+#include "NewProjectDialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -62,7 +63,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::menuSelected()
 {
-
+	NewProjectDialog dlg;
+	if (dlg.exec() == QDialog::Accepted)
+	{
+	}
 }
 
 void MainWindow::onClosed()

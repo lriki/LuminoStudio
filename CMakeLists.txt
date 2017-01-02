@@ -2,7 +2,14 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 #-------------------------------------------------------------------------------
-set(LN_SOURCES
+set(LN_SOURCES_Core
+	src/Core/Project.cpp
+	src/Core/Project.h
+)
+
+set(LN_SOURCES_Editor
+	src/NewProjectDialog.cpp
+	src/NewProjectDialog.h
 	src/main.cpp
 	src/MainWindow.cpp
 	src/MainWindow.h
@@ -12,6 +19,13 @@ set(LN_SOURCES
 	src/LuminoStudio.PCH.h
 )
 
+source_group("Core"			FILES ${LN_SOURCES_Core})
+source_group("Editor"		FILES ${LN_SOURCES_Editor})
+
+set(LN_SOURCES
+	${LN_SOURCES_Core}
+	${LN_SOURCES_Editor}
+)
 
 add_subdirectory(external/Lumino)
 
