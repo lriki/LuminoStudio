@@ -2,6 +2,8 @@
 #pragma once
 
 namespace ls {
+class IEditor;
+class ProjectLibrary;
 	
 class ProjectData
 	: public Object
@@ -35,11 +37,14 @@ public:
 
 	ProjectData* GetData() const { return m_data; }
 
+	void CreateProjectLibrary(const String& id, IEditor* editorInterface);
+
 	void InitializeWorkspace();
 
 
 private:
-	RefPtr<ProjectData>	m_data;
+	RefPtr<ProjectData>		m_data;
+	RefPtr<ProjectLibrary>	m_projectLibrary;
 };
 
 } // namespace ls

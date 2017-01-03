@@ -5,19 +5,30 @@ cmake_minimum_required(VERSION 3.0)
 set(LN_SOURCES_Core
 	src/Core/EditorCore.cpp
 	src/Core/EditorCore.h
+	src/Core/EditorInterface.cpp
+	src/Core/EditorInterface.h
 	src/Core/Project.cpp
 	src/Core/Project.h
+	src/Core/ProjectLibrary.cpp
+	src/Core/ProjectLibrary.h
+)
+
+set(LN_SOURCES_HC1
+	src/HC1/HC1ProjectLibrary.cpp
+	src/HC1/HC1ProjectLibrary.h
 )
 
 set(LN_SOURCES_Editor
+	src/LuminoDockWidget.cpp
+	src/LuminoDockWidget.h
+	src/LuminoViewWidget.cpp
+	src/LuminoViewWidget.h
 	src/NewProjectDialog.cpp
 	src/NewProjectDialog.h
 	src/NewProjectDialog.ui
 	src/main.cpp
 	src/MainWindow.cpp
 	src/MainWindow.h
-	src/LuminoViewWidget.cpp
-	src/LuminoViewWidget.h
 	src/QtHelper.cpp
 	src/QtHelper.h
 	src/LuminoStudio.PCH.cpp
@@ -25,10 +36,12 @@ set(LN_SOURCES_Editor
 )
 
 source_group("Core"			FILES ${LN_SOURCES_Core})
+source_group("HC1"			FILES ${LN_SOURCES_HC1})
 source_group("Editor"		FILES ${LN_SOURCES_Editor})
 
 set(LN_SOURCES
 	${LN_SOURCES_Core}
+	${LN_SOURCES_HC1}
 	${LN_SOURCES_Editor}
 )
 

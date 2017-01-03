@@ -12,7 +12,6 @@ void EditorCore::NewProject(const String& projectName, const String& title, cons
 	m_project->GetData()->SetProjectName(projectName);
 	m_project->GetData()->SetTitle(title);
 	m_project->GetData()->SetProjectPath(projectPath);
-	m_project->InitializeWorkspace();
 }
 
 } // namespace ls

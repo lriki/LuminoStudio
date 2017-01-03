@@ -1,8 +1,10 @@
 
 #include "Core/EditorCore.h"
+#include "Core/Project.h"
 #include "QtHelper.h"
 #include "MainWindow.h"
 #include "LuminoViewWidget.h"
+#include "LuminoDockWidget.h"
 #include "NewProjectDialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -63,6 +65,31 @@ MainWindow::~MainWindow()
 
 }
 
+ls::IEditorWindow* MainWindow::GetMainWindow()
+{
+	return this;
+}
+
+ls::IEditorPane* MainWindow::CreateDockablePane(const ln::String& id, ls::DockingArea area)
+{
+	// http://doc.qt.io/qt-5/qtwidgets-mainwindows-dockwidgets-example.html
+	LuminoDockWidget* dock = new LuminoDockWidget(tr("Customers"), this);
+	dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+
+	switch (area)
+	{
+	default:
+	case ls::DockingArea::Left:
+		addDockWidget(Qt::LeftDockWidgetArea, dock);
+		break;
+	case ls::DockingArea::Right:
+		addDockWidget(Qt::RightDockWidgetArea, dock);
+		break;
+	}
+
+	return dock;
+}
+
 void MainWindow::onNewProject()
 {
 	NewProjectDialog dlg;
@@ -72,6 +99,8 @@ void MainWindow::onNewProject()
 			QtHelper::toLNString(dlg.GetProjectName()),
 			QtHelper::toLNString(dlg.GetProjectTitle()),
 			QtHelper::toLNString(dlg.GetProjectPath()));
+		ls::EditorCore::instance.GetProject()->CreateProjectLibrary(_T("dummy"), this);
+		ls::EditorCore::instance.GetProject()->InitializeWorkspace();
 	}
 }
 
