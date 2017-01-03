@@ -1,4 +1,6 @@
 
+#include "Core/EditorCore.h"
+#include "QtHelper.h"
 #include "MainWindow.h"
 #include "LuminoViewWidget.h"
 #include "NewProjectDialog.h"
@@ -30,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
 	quitAction->setStatusTip(tr("Exit application."));
 
 	// シグナルとスロットを接続する
-	connect(newAction, SIGNAL(triggered()), this, SLOT(menuSelected()));
+	connect(newAction, SIGNAL(triggered()), this, SLOT(onNewProject()));
 	connect(saveAction, SIGNAL(triggered()), this, SLOT(menuSelected()));
 	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
 
@@ -61,12 +63,20 @@ MainWindow::~MainWindow()
 
 }
 
-void MainWindow::menuSelected()
+void MainWindow::onNewProject()
 {
 	NewProjectDialog dlg;
 	if (dlg.exec() == QDialog::Accepted)
 	{
+		ls::EditorCore::instance.NewProject(
+			QtHelper::toLNString(dlg.GetProjectName()),
+			QtHelper::toLNString(dlg.GetProjectTitle()),
+			QtHelper::toLNString(dlg.GetProjectPath()));
 	}
+}
+
+void MainWindow::menuSelected()
+{
 }
 
 void MainWindow::onClosed()

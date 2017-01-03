@@ -17,6 +17,9 @@ int main(int argc, char *argv[])
 		QTextStream ts(&f);
 		qApp->setStyleSheet(ts.readAll());
 	}
+
+	QFont font("Meiryo UI");
+	a.setFont(font);
 	
 
 	MainWindow w;

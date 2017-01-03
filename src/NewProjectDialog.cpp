@@ -1,22 +1,29 @@
 #include "NewProjectDialog.h"
+#include "ui_NewProjectDialog.h"
 
-NewProjectDialog::NewProjectDialog(QWidget* parent)
-	: QDialog(parent)
+NewProjectDialog::NewProjectDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::NewProjectDialog)
 {
-	QVBoxLayout* layout = new QVBoxLayout(this);
+    ui->setupUi(this);
+}
 
-	m_buttonBox = new QDialogButtonBox(this);
-	m_buttonBox->addButton(QDialogButtonBox::Ok);
-	m_buttonBox->addButton(QDialogButtonBox::Cancel);
+NewProjectDialog::~NewProjectDialog()
+{
+    delete ui;
+}
 
-	connect(m_buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(m_buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+QString NewProjectDialog::GetProjectName() const
+{
+	return ui->lineEdit->text();
+}
 
-	m_editProjectName = new QLineEdit(this);
-	m_editProjectName->resize(100, 30);
+QString NewProjectDialog::GetProjectTitle() const
+{
+	return ui->lineEdit_2->text();
+}
 
-
-	layout->addWidget(m_editProjectName);
-	layout->addWidget(m_buttonBox, 0, Qt::AlignBottom);
-	setLayout(layout);
+QString NewProjectDialog::GetProjectPath() const
+{
+	return ui->lineEdit_3->text();
 }

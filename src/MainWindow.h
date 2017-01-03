@@ -12,6 +12,7 @@ public:
 	virtual ~MainWindow();
 
 private slots:
+	void onNewProject();
 	void menuSelected();
 
 	void onClosed();

@@ -1,8 +1,10 @@
-﻿PROJECT(LuminoStudio)
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+﻿project(LuminoStudio)
+cmake_minimum_required(VERSION 3.0)
 
 #-------------------------------------------------------------------------------
 set(LN_SOURCES_Core
+	src/Core/EditorCore.cpp
+	src/Core/EditorCore.h
 	src/Core/Project.cpp
 	src/Core/Project.h
 )
@@ -10,11 +12,14 @@ set(LN_SOURCES_Core
 set(LN_SOURCES_Editor
 	src/NewProjectDialog.cpp
 	src/NewProjectDialog.h
+	src/NewProjectDialog.ui
 	src/main.cpp
 	src/MainWindow.cpp
 	src/MainWindow.h
 	src/LuminoViewWidget.cpp
 	src/LuminoViewWidget.h
+	src/QtHelper.cpp
+	src/QtHelper.h
 	src/LuminoStudio.PCH.cpp
 	src/LuminoStudio.PCH.h
 )
@@ -33,6 +38,9 @@ include_directories(
 	external/Lumino/include
 	external/Lumino/external/Lumino.Core/include
 )
+
+add_definitions(-DUNICODE)
+add_definitions(-D_UNICODE)
 
 #-------------------------------------------------------------------------------
 # Qt のパスを最初に指定する必要がある
@@ -53,6 +61,15 @@ qt5_add_resources(LN_QT_RESOURCES
 	src/luminostudio.qrc
 	src/Resources/style.qrc
 )
+
+
+foreach (file ${LN_SOURCES})
+	if (${file} MATCHES ".+\\.ui")
+		list(APPEND LN_QT_UI_RESOURCES ${file})
+	endif()
+endforeach()
+qt5_wrap_ui(UI_HEADERS ${LN_QT_UI_RESOURCES})
+
 
 add_executable(LuminoStudio ${LN_SOURCES} ${LN_QT_RESOURCES})
 target_link_libraries(LuminoStudio Qt5::Widgets)
