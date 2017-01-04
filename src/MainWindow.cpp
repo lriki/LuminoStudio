@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
 	QAction* newAction = new QAction(tr("New project(&N)"), this);
 	newAction->setStatusTip(tr("Create a new project."));
 
+	QAction* openAction = new QAction(tr("Open(&O)"), this);
+	openAction->setStatusTip(tr("Open project."));
+
 	QAction* saveAction = new QAction(tr("Save(&S)"), this);
 	saveAction->setStatusTip(tr("Save project."));
 
@@ -35,12 +38,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 	// シグナルとスロットを接続する
 	connect(newAction, SIGNAL(triggered()), this, SLOT(onNewProject()));
+	connect(openAction, SIGNAL(triggered()), this, SLOT(onOpenProject()));
 	connect(saveAction, SIGNAL(triggered()), this, SLOT(menuSelected()));
 	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
 
 	// ファイルメニューを作成する
 	QMenu* fileMenu = this->menuBar()->addMenu(tr("File(&F)"));
 	fileMenu->addAction(newAction);
+	fileMenu->addAction(openAction);
 	fileMenu->addAction(saveAction);
 	fileMenu->addSeparator();
 	fileMenu->addAction(quitAction);
@@ -101,6 +106,16 @@ void MainWindow::onNewProject()
 			QtHelper::toLNString(dlg.GetProjectPath()));
 		ls::EditorCore::instance.GetProject()->CreateProjectLibrary(_T("dummy"), this);
 		ls::EditorCore::instance.GetProject()->InitializeWorkspace();
+	}
+}
+
+void MainWindow::onOpenProject()
+{
+	QString path = QFileDialog::getOpenFileName(this, "screenshot save　folder");
+	if (!path.isEmpty())
+	{
+		ls::EditorCore::instance.OpenProject(QtHelper::toLNPath(path));
+		ls::EditorCore::instance.GetProject()->CreateProjectLibrary(_T("dummy"), this);
 	}
 }
 

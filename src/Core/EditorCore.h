@@ -14,6 +14,7 @@ public:
 	ProjectLibraryManager* GetProjectLibraryManager() { return &m_projectLibraryManager; }
 
 	void NewProject(const String& projectName, const String& title, const PathName& projectPath);
+	void OpenProject(const PathName& projectFilePath);
 
 	Project* GetProject() const { return m_project; }
 

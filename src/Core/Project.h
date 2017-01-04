@@ -11,22 +11,22 @@ class ProjectData
 public:
 	ProjectData() = default;
 	 
-	void SetProjectName(const String& value) { m_projectName = value; }
+	void SetProjectFileName(const String& value) { m_projectFileName = value; }
 
-	const String& GetProjectName() const { return m_projectName; }
+	const String& GetProjectFileName() const { return m_projectFileName; }
 
 	void SetTitle(const String& value) { m_title = value; }
 
 	const String& GetTitle() const { return m_title; }
 
-	void SetProjectPath(const PathName& value) { m_projectPath = value; }
+	void SetProjectDirectoryPath(const PathName& value) { m_projectDirectoryPath = value; }
 
-	const PathName& GetProjectPath() const { return m_projectPath; }
+	const PathName& GetProjectDirectoryPath() const { return m_projectDirectoryPath; }
 
 private:
-	String		m_projectName;
+	String		m_projectFileName;
 	String		m_title;
-	PathName	m_projectPath;
+	PathName	m_projectDirectoryPath;
 };
 
 class Project
@@ -37,10 +37,14 @@ public:
 
 	ProjectData* GetData() const { return m_data; }
 
+	PathName GetProjectFileFullPath() const;
+
 	void CreateProjectLibrary(const String& id, IEditor* editorInterface);
 
 	void InitializeWorkspace();
 
+	void Save();
+	void Load(const PathName& filePath);
 
 private:
 	RefPtr<ProjectData>		m_data;

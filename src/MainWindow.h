@@ -24,6 +24,7 @@ public:
 
 private slots:
 	void onNewProject();
+	void onOpenProject();
 	void menuSelected();
 
 	void onClosed();

@@ -16,6 +16,15 @@ void LuminoViewWidget::initialize()
 {
 	m_host = ln::UINativeHostWindow::Create(winId());
 	m_host->GetViewport()->SetBackgroundColor(ln::Color::Gray);
+	m_host->GetViewport()->SetPlacement(ln::ViewportPlacement::AutoResize);
+
+	m_sceneGraph2D = ln::SceneGraph2D::Create();
+	m_cameraViewportLayer2D = ln::CameraViewportLayer::Create(m_sceneGraph2D->GetMainCamera());
+
+	m_host->GetViewport()->GetLayers()->Insert(0, m_cameraViewportLayer2D);
+
+	m_sp = ln::Sprite2D::Create(_T("D:/GameProjects/Chronicles/110220c_as019.jpg"));
+	m_sceneGraph2D->GetRootNode()->AddChild(m_sp);
 }
 
 void LuminoViewWidget::dispose()
@@ -25,11 +34,14 @@ void LuminoViewWidget::dispose()
 void LuminoViewWidget::paintEvent(QPaintEvent *e)
 {
 	Q_UNUSED(e);
-	//ln::Engine::Update();
-
-	printf("a\n");
 
 	m_host->Render();
+}
+
+void LuminoViewWidget::resizeEvent(QResizeEvent* e)
+{
+	ln::PlatformEventArgs args = ln::PlatformEventArgs::MakeWindowSizeChangedEvent(m_host->GetPlatformWindow(), e->size().width(), e->size().height());
+	m_host->GetPlatformWindow()->SendPlatformEvent(args);
 }
 
 //void LuminoGLWidget::initializeGL()
