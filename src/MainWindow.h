@@ -14,6 +14,7 @@ class MainWindow
 public:
 	MainWindow(QWidget *parent = 0);
 	virtual ~MainWindow();
+	void dispose();
 
 	// IEditor interface
 	virtual ls::IEditorWindow* GetMainWindow() override;

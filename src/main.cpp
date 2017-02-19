@@ -21,11 +21,13 @@ int main(int argc, char *argv[])
 	QFont font("Meiryo UI");
 	a.setFont(font);
 	
-
-	MainWindow w;
-	w.show();
-	int exitCode = a.exec();
-
+	int exitCode;
+	{
+		MainWindow w;
+		w.show();
+		exitCode = a.exec();
+		w.dispose();
+	}
 	ln::Engine::Terminate();
 	return exitCode;
 }

@@ -70,6 +70,10 @@ MainWindow::~MainWindow()
 
 }
 
+void MainWindow::dispose()
+{
+}
+
 ls::IEditorWindow* MainWindow::GetMainWindow()
 {
 	return this;
@@ -106,6 +110,7 @@ void MainWindow::onNewProject()
 			QtHelper::toLNString(dlg.GetProjectPath()));
 		ls::EditorCore::instance.GetProject()->CreateProjectLibrary(_T("dummy"), this);
 		ls::EditorCore::instance.GetProject()->InitializeWorkspace();
+		ls::EditorCore::instance.GetProject()->GetProjectLibrary()->OnActivateWorkspace();
 	}
 }
 
@@ -116,6 +121,7 @@ void MainWindow::onOpenProject()
 	{
 		ls::EditorCore::instance.OpenProject(QtHelper::toLNPath(path));
 		ls::EditorCore::instance.GetProject()->CreateProjectLibrary(_T("dummy"), this);
+		ls::EditorCore::instance.GetProject()->GetProjectLibrary()->OnActivateWorkspace();
 	}
 }
 

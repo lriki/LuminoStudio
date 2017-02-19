@@ -16,6 +16,7 @@ public:
 	IEditor* GetEditorInterface() const { return m_editorInterface; }
 
 	virtual void OnInitializeWorkspace() = 0;
+	virtual void OnActivateWorkspace() = 0;
 
 private:
 	IEditor*	m_editorInterface;

@@ -48,8 +48,8 @@ set(LN_SOURCES
 add_subdirectory(external/Lumino)
 
 include_directories(
-	external/Lumino/include
-	external/Lumino/external/Lumino.Core/include
+	external/Lumino/Source/LuminoCore/Include
+	external/Lumino/Source/LuminoEngine/Include
 )
 
 add_definitions(-DUNICODE)
@@ -86,7 +86,7 @@ qt5_wrap_ui(UI_HEADERS ${LN_QT_UI_RESOURCES})
 
 add_executable(LuminoStudio ${LN_SOURCES} ${LN_QT_RESOURCES})
 target_link_libraries(LuminoStudio Qt5::Widgets)
-target_link_libraries(LuminoStudio Lumino_Static)
+target_link_libraries(LuminoStudio LuminoEngine)
 ln_add_pch2(LuminoStudio "LuminoStudio.PCH.h" "src/LuminoStudio.PCH.cpp")
 qt5_use_modules(LuminoStudio Widgets OpenGL)
 

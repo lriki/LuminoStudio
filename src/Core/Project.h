@@ -23,10 +23,15 @@ public:
 
 	const PathName& GetProjectDirectoryPath() const { return m_projectDirectoryPath; }
 
+	void SetProjectLibraryId(const String& value) { m_projectLibraryId = value; }
+
+	const String& GetProjectLibraryId() const { return m_projectLibraryId; }
+
 private:
 	String		m_projectFileName;
 	String		m_title;
 	PathName	m_projectDirectoryPath;
+	String		m_projectLibraryId;
 };
 
 class Project
@@ -38,6 +43,8 @@ public:
 	ProjectData* GetData() const { return m_data; }
 
 	PathName GetProjectFileFullPath() const;
+
+	ProjectLibrary* GetProjectLibrary() const { return m_projectLibrary; }
 
 	void CreateProjectLibrary(const String& id, IEditor* editorInterface);
 

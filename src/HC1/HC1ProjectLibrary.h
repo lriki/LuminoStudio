@@ -13,6 +13,7 @@ public:
 	virtual ~HC1ProjectLibrary() = default;
 
 	virtual void OnInitializeWorkspace() override;
+	virtual void OnActivateWorkspace() override;
 
 private:
 };
